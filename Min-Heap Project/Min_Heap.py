@@ -9,7 +9,7 @@ class Heap:
         self.heap_array.append(k)
         self.reorderUp(k)
 
-    #Going to reorder the heap from the bottom of the tree to the root
+    #Going to reorder the heap from the top of the path to the root
     def reorderUp(self, k):
         i = self.heap_array.index(k)
     
@@ -19,16 +19,15 @@ class Heap:
                 if(self.heap_array[i] < self.heap_array[p]):
                    self.swap(p, i)
             i = p
-    
-    #Going to reorder the heap from the root to the leafs, following only one peth
+
+    #Going to reorder the heap from the top of the path to the leaf, following only one path
     def reorderDown(self, k):
         i = self.heap_array.index(k)
         while i < len(self.heap_array):
                 l, r = self.get_childs(i)
                 if(r < len(self.heap_array)):
-
-                    #Going to see what child is the smalles,
-                    #the parent will be swaped with the smallest child
+                    #Going to see if the left or the right is smaller
+                    #We are going to swap the parent with the smallest of either child
                     if(self.heap_array[l] < self.heap_array[r] 
                     and self.heap_array[l] < self.heap_array[i]):
                         self.swap(i, l)
@@ -69,7 +68,7 @@ class Heap:
 
         return min_elem
 
-    #Checking if the size of the heap is empty
+    #Going to return if the heap is empty
     def is_empty(self):
         return len(self.heap_array) == 0
 
@@ -81,7 +80,7 @@ def heapSort(l):
     while not h.is_empty() :
         print(h.extract_min())
 
-#Going to read the numebers from the file
+#Getting the numbers from the number file
 def getFileNums(fileName):
     f = open(fileName, "r")
     numbers = []
@@ -89,5 +88,5 @@ def getFileNums(fileName):
         numbers.extend(list(map(int, l.split(","))))
     return numbers
 
-#Going to sort the numbers in the file
+#Going to sort all the numbers in the numbers file.
 heapSort(getFileNums("numbers.txt"))
