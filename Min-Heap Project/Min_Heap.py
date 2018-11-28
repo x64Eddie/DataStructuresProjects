@@ -72,7 +72,7 @@ class Heap:
         return len(self.heap_array) == 0
 
     #Peek at the top number in the tree
-    def peek():
+    def peek(self):
         if not self.is_empty():
             return self.heap_array[0]
         else:
@@ -86,7 +86,8 @@ def heapSort(l):
     while not h.is_empty() :
         n = h.extract_min()
         if(not h.is_empty()):
-            self.assertTrue(n < h.peek()) #Testing that the value extracted is the minumum
+            assert n < h.peek() #Testing that the value extracted is the minumum
+        print(n),
 
 #Getting the numbers from the number file
 def getFileNums(fileName):
