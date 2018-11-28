@@ -64,13 +64,19 @@ class Heap:
         self.heap_array[0] = self.heap_array[l - 1]
         self.reorderDown(self.heap_array[0])
         self.heap_array = self.heap_array[:l-1]
-        
 
-        return min_elem
+        return min_elem        
 
     #Going to return if the heap is empty
     def is_empty(self):
         return len(self.heap_array) == 0
+
+    #Peek at the top number in the tree
+    def peek():
+        if not self.is_empty():
+            return self.heap_array[0]
+        else:
+            return None
 
 #Going to insert all the items in heap and extrac them all ordered.
 def heapSort(l):
@@ -78,7 +84,9 @@ def heapSort(l):
     for num in l:
         h.insert(num)
     while not h.is_empty() :
-        print(h.extract_min())
+        n = h.extract_min()
+        if(not h.is_empty()):
+            self.assertTrue(n < h.peek()) #Testing that the value extracted is the minumum
 
 #Getting the numbers from the number file
 def getFileNums(fileName):
