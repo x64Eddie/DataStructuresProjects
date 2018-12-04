@@ -5,7 +5,13 @@ This algorithm is going to find the least spanning tree by adding the endges tha
 contian the less weight and checking that the two nodes are not connected already.
 '''
 def kruskalAlgorithm(g, size):
+    dsf = DisjointSet(size)
     e = bubbleSort(g.get_edges())
+    for i in range(len(e)):
+        if not dsf.are_in_same_set(e[i].src, e[i].dest):
+            dsf.merge_sets(e[i].src, e[i].dest)
+            print(e[i].src, e[i].dest, e[i].weight)
+
     
     
 def bubbleSort(edges):
@@ -19,7 +25,7 @@ def bubbleSort(edges):
 
 
 #First I am going to create a Graph
-graph = GraphAL(4, False)#Graph with 10 vertices and non-directed
+graph = GraphAL(4, False)
 graph.add_edge(0, 1, 4)
 graph.add_edge(1, 2, 5)
 graph.add_edge(2, 3, 7)
