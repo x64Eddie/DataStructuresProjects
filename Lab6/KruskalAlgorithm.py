@@ -11,8 +11,6 @@ def kruskalAlgorithm(g, size):
         if not dsf.are_in_same_set(e[i].src, e[i].dest):
             dsf.merge_sets(e[i].src, e[i].dest)
             print(e[i].src, e[i].dest, e[i].weight)
-
-    
     
 def bubbleSort(edges):
     n = len(edges)
