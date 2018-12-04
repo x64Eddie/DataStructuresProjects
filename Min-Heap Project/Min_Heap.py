@@ -1,4 +1,5 @@
 import unittest
+from GraphAL import GraphALNode
 
 class Heap:
     def __init__(self):
@@ -88,6 +89,9 @@ def heapSort(l):
         if(not h.is_empty()):
             assert n < h.peek() #Testing that the value extracted is the minumum
         print(n),
+
+def heapSortGraph(l):
+
 
 #Getting the numbers from the number file
 def getFileNums(fileName):

@@ -1,13 +1,13 @@
 import re
 
 class Node(object):
-    password = ""
+    item = -1
     count = 1
     next = None
     prev = None
 
-    def __init__(self, password):
-        self.password = password
+    def __init__(self, item):
+        self.item = item
 
 class LinkList():
     head = None
@@ -17,7 +17,7 @@ class LinkList():
     def checkDuplicates(self, node):
         temp = self.head
         while(temp != None):
-            if temp.password == node.password:
+            if temp.item == node.item:
                 return temp
             temp = temp.next
         return None 
@@ -41,7 +41,7 @@ class LinkList():
     def printL(self):
         t = self.head
         while t != None:
-            print("Password: ", t.password, "Count: ", t.count)
+            print("Password: ", t.item, "Count: ", t.count)
             t = t.next
     
     def bubbleSort(self):
@@ -112,12 +112,12 @@ def solA():
     file = open("PasswordsEx.txt", "r")
     i = 0
     for line in file:
-        #We are only intereseted in the passwords, we are going to split username and password
+        #We are only intereseted in the passwords, we are going to split username and item
         l = line.split()
         if(len(l)>1):
             i += 1
             node = Node(l[1])
-            #print("Adding :", node.password, " ",i )
+            #print("Adding :", node.item, " ",i )
             linkList.addNode(node)
     linkList.bubbleSort()
     linkList.printL()
@@ -131,11 +131,11 @@ def solB():
     for line in file:
         l = line.split()
         if(len(l)>1):
-            password  = l[1]
-            if password in dic:
-                dic[password] += 1
+            item  = l[1]
+            if item in dic:
+                dic[item] += 1
             else:
-                dic[password] = 0
+                dic[item] = 0
     for k,v in dic.items():
         print("Password: ", k, "Count:", v+1 )
 
@@ -144,7 +144,7 @@ def getPasswords(l, max):
     for i in range(max):
         if(t == None):
             break
-        print(i, t.password)
+        print(i, t.item)
         t = t.next
 
 solB()

@@ -1,9 +1,14 @@
+
 class GraphALNode:
     def __init__(self, item, weight, next):
         self.item = item
         self.weight = weight
         self.next = next
-
+class Edge():
+        def __init__(self, src, dest, weight):
+                self.src = src
+                self.dest = dest
+                self.weight = weight
 
 class GraphAL:
 
@@ -86,3 +91,25 @@ class GraphAL:
                 temp = temp.next
 
         return vertices
+
+    def containsEdge(self, l0, n0):
+        for i in range(len(l0)):
+            if(l0[i].src == n0.dest and l0[i].dest == n0.src
+            or l0[i].src == n0.src and l0[i].dest == n0.dest):
+                return True
+        return False
+
+    def get_edges(self):
+        l = []
+        for i in range(len(self.adj_list)):
+            c = self.adj_list[i]
+            while not c == None:
+                e = Edge(i, c.item, c.weight)
+                if(not self.containsEdge(l, e)):
+                    l.append(e)
+                c = c.next
+        return l
+    
+    
+
+
