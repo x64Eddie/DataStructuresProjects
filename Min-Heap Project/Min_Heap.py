@@ -1,6 +1,3 @@
-import unittest
-from GraphAL import GraphALNode
-
 class Heap:
     def __init__(self):
         self.heap_array = []
@@ -86,12 +83,7 @@ def heapSort(l):
         h.insert(num)
     while not h.is_empty() :
         n = h.extract_min()
-        if(not h.is_empty()):
-            assert n < h.peek() #Testing that the value extracted is the minumum
         print(n),
-
-def heapSortGraph(l):
-
 
 #Getting the numbers from the number file
 def getFileNums(fileName):
@@ -99,7 +91,10 @@ def getFileNums(fileName):
     numbers = []
     for l in f:
         numbers.extend(list(map(int, l.split(","))))
+    print("Given numbers", numbers)
     return numbers
+
+
 
 #Going to sort all the numbers in the numbers file.
 heapSort(getFileNums("numbers.txt"))
